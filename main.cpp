@@ -22,8 +22,7 @@ std::vector<std::string> get_input(const std::string& filepath) {
 
     return result;
 }
-
-int day2(const std::vector<std::string>& input, const int start_pos =50, const int dial_max= 100, const int dial_min=0) {
+int day1(const std::vector<std::string>& input, const int start_pos =50, const int dial_max= 100, const int dial_min=0) {
     int ans = start_pos;
     int result =0;
 
@@ -47,27 +46,11 @@ int day2(const std::vector<std::string>& input, const int start_pos =50, const i
     return result;
 }
 
-int day1(const std::vector<std::string>& input, const int start_pos =50, const int dial_max = 100) {
-    int ans = start_pos;
-    int result =0;
-    for (auto& line: input) {
-        const int clicks=  std::stoi(line.substr(1, -1));
-        if (line[0] == 'R') {
-            ans = (ans + clicks) % dial_max;
-        } else {
-            ans = (ans - clicks + dial_max) % dial_max;
-        }
-        if (ans == 0) result++;
-    }
-
-    return result;
-}
-
 int main() {
     // auto cwd = std::filesystem::current_path();
     // std::cout << cwd << std::endl;
-    auto input = get_input("../input/day2/input.txt");
-    std::cout << day2(input) << std::endl;
+    auto input = get_input("../input/day1/input.txt");
+    std::cout << day1(input) << std::endl;
 
     return 0;
 }
